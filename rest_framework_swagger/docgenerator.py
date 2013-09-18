@@ -138,10 +138,9 @@ class DocumentationGenerator(object):
             if method_docs is not None:
                 docstring += method_docs
         else:
-            docstring = trim_docstring(get_view_description(callback))
+            docstring = trim_docstring(get_view_description(callback, html=True))
 
         docstring = self.__strip_params_from_docstring__(docstring)
-        docstring = docstring.replace("\n", "<br/>")
 
         return docstring
 
@@ -159,7 +158,6 @@ class DocumentationGenerator(object):
             trim_at = docstring.find(line)
             docstring = docstring[:trim_at]
 
-        docstring = docstring.replace("\n", "<br/>")
         return docstring
 
     def get_models(self, apis):
